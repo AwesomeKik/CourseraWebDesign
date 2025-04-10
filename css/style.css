@@ -1,0 +1,132 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family:Arial, sans-serif;
+}
+
+/*///// Added this code to make the gallery an actual grid/////*/
+
+.grid {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.grid figure {
+    padding: 1em;
+}
+
+/*/////////////////////////////*/
+
+h1 {
+    text-align: center;
+    font-family:Arial, sans-serif;
+    font-size: 1.95em;
+}
+
+h2{
+    text-align:center;
+  }
+
+li{
+    margin-top: 20px;
+}
+
+img{
+    border: 5px solid blue;
+    border-radius: 35px;
+    width: 100%;
+  }
+
+.label{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*Grid Organization Media Queries*/
+
+@media (min-width: 772px) {
+
+    .grid {
+        grid-template-columns: 50% 50%;
+        align-items: center;
+    }
+
+    .grid img {
+        border-radius: 50%; /*circular shape*/
+        max-height: 300px;
+        object-fit: cover;
+        max-height: 1000px;
+    }
+
+    .grid figure:last-child {
+        grid-column: 1 / span 2; 
+    }  
+
+    /*Last element takes up 2 columns.
+      Not hard coded to be the 9th element.*/
+
+}
+
+@media (min-width: 992px) {
+
+    .grid {
+        width: 80%;
+        margin-left: 12%;
+    }
+
+    .grid img {
+        border-radius: 0%; /*no more shape*/
+    }
+
+    .grid figure:nth-child(3n) { 
+        grid-column: 1 / span 2;
+    }
+
+    /*Every third element takes up 2 columns.*/
+    
+    .grid figure:nth-child(3n) img {
+        max-height: 600px;
+        max-width: 70%; 
+        margin-left: 15%;
+
+        /*The element does take up 2 columns.
+          I just shortened the width of the imgs
+          to make them more viewable on wider devices.*/
+    }  
+
+}
+
+/* Accessibility Media Queries*/
+
+@media (prefers-reduced-motion: reduce) {
+    html{
+        scroll-behavior: unset; /*Removes the scrolling animation*/
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: darkgrey;
+    }
+
+    .grid figure {
+        background-color: rgb(48, 48, 48);
+        border-radius: 10px;
+    }
+
+    .label {
+        color: rgb(255, 200, 0);
+    }
+
+    img {
+        border: 5px solid black;
+    }
+  }
